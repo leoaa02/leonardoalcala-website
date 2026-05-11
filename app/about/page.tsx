@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import { Metadata } from "next"
 import { client } from "@/sanity/lib/client"
 import { authorQuery } from "@/sanity/lib/queries"
 import type { Author } from "@/lib/types"
@@ -74,6 +74,11 @@ export default async function AboutPage() {
                 transform ideas into reality and in the importance of sharing
                 knowledge with others.
               </p>
+              <p>I´m from Venezuela. I live in Argentina at the moment. I have lived in Peru, and I have been to Colombia, Ecuador, and Bolivia. 
+                I have always been an enthusiastic reader and writer. 
+                I would like to share with you all what I have read and what I am learning daily, 
+                on topics like programming, books, music, a little art, writing tips, and more. Thank you for taking the time to read this blog. 
+                Welcome, and I hope you enjoy.</p>
               <p>
                 When I&apos;m not coding, you&apos;ll find me writing about my
                 experiences, exploring new ideas, or diving deep into topics

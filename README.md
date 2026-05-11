@@ -1,35 +1,46 @@
-# leonardoalcala-website
+# Leonardo Alcala — Personal Website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+A modern and minimalist personal website and blog built with Next.js, Tailwind CSS, and Sanity CMS.
 
-## Built with v0
+This website serves as my digital home to share:
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+- My professional portfolio
+- Personal and technical projects
+- Articles and reflections
+- Notes and ideas
+- Contact information
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_B2TnFPXIRFGBZ3bTKwEcwx28OXcN)
+## 🌐 Live Website
 
-## Getting Started
+Coming soon: https://leonardoalcala.com
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Responsive design
+- Dark mode
+- Blog and notes system
+- Projects showcase
+- SEO optimized
+- RSS feed
+- Sitemap
+- Contact section
+- Sanity CMS integration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js
+- React
+- Tailwind CSS
+- TypeScript
+- Sanity CMS
+- Vercel
 
-## Learn More
+## 📂 Sections
 
-To learn more, take a look at the following resources:
+- Home
+- About
+- Projects
+- Blog
+- Notes
+- Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
-
-<a href="https://v0.app/chat/api/kiro/clone/leoaa02/leonardoalcala-website" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
