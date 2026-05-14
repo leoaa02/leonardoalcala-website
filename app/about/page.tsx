@@ -90,7 +90,7 @@ export default async function AboutPage() {
           </section>
 
           <section className="mb-12">
-            <h2 className="font-serif text-2xl font-semibold">Skills</h2>
+            <h2 className="font-serif text-2xl font-semibold">Programming Skills</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {author.skills?.map((skill) => (
                 <span
@@ -100,6 +100,20 @@ export default async function AboutPage() {
                   {skill}
                 </span>
               ))}
+              <ul>
+              <li>
+                Frontend Web Development (HTML, CSS, JavaScript, React, Next.js)
+              </li>
+              <li>
+                Full Stack Development (currently expanding my backend and database knowledge)
+              </li>
+              <li>
+                Manual QA Testing
+              </li>
+              <li>
+                MySQL Database Management and SQL Queries
+              </li>
+            </ul>
             </div>
           </section>
 
@@ -114,14 +128,32 @@ export default async function AboutPage() {
                   {interest}
                 </span>
               ))}
+              <ul>
+              <li>Technology and Software Development</li>
+              <li>Creative Writing and Storytelling</li>
+              <li>Productivity Systems and Personal Development</li>
+              <li>Open Source Software and Community Building</li>
+              <li>Design Systems and User Experience</li>
+              <li>Learning New Technologies and Programming Languages</li>
+              <li>Productivity and Personal Development</li>
+              <li>Reading and Lifelong Learning</li>
+              <li>Fitness and Muscle Building</li>
+              <li>Photography and Visual Aesthetics</li>
+              <li>Fantasy Literature and Worldbuilding</li>
+              <li>Christian Theology and Biblical Studies</li>
+              </ul>
             </div>
           </section>
 
           <section>
             <h2 className="font-serif text-2xl font-semibold">Career Goals</h2>
-            <p className="mt-4 text-muted-foreground">
-              {author.careerGoals || defaultAuthor.careerGoals}
-            </p>
+            <p>My goal is to build a meaningful career at the intersection of technology, writing, and digital media. I am currently developing my skills in web development, content marketing, SEO, and storytelling, with the vision of creating impactful digital
+                experiences and publishing ideas that inform, inspire, and connect with people around the world.
+                <br />
+                <br />
+                In the short term, I aim to gain professional experience as a Junior Frontend or Full Stack Developer while continuing to
+                strengthen my technical and creative abilities. In the long term, I aspire to establish a strong personal brand, grow my blog into a respected platform for thoughtful content, and contribute to projects that 
+                combine innovation, communication, and human creativity.</p>
           </section>
         </div>
       </div>
