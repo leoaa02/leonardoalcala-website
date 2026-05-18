@@ -2,8 +2,8 @@ import Link from "next/link"
 
 interface ReadingCardProps {
   title: string
-  author: string
-  description: string
+  author?: string
+  description?: string
   href: string
   external?: boolean
 }
@@ -18,11 +18,15 @@ export function ReadingCard({ title, author, description, href, external }: Read
             {title}
           </h3>
         </div>
-        <span className="text-sm font-medium uppercase tracking-[0.24em] text-primary">
-          {author}
-        </span>
+        {author ? (
+          <span className="text-sm font-medium uppercase tracking-[0.24em] text-primary">
+            {author}
+          </span>
+        ) : null}
       </div>
-      <p className="mt-4 text-sm leading-7 text-muted-foreground">{description}</p>
+      {description ? (
+        <p className="mt-4 text-sm leading-7 text-muted-foreground">{description}</p>
+      ) : null}
       <Link
         href={href}
         target={external ? "_blank" : undefined}
