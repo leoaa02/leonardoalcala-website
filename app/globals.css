@@ -128,11 +128,44 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground;
+  }
+
+  p,
+  li,
+  span,
+  div {
+    @apply text-foreground;
+  }
+
+  a {
+    @apply border-border outline-ring/50;
+  }
+
+  a:hover {
+    @apply text-primary/80;
+  }
+
+  small {
+    @apply text-muted-foreground;
   }
 }
-
 /* Prose styles for blog content */
 .prose {
   @apply max-w-none;

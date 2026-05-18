@@ -1,33 +1,43 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Cormorant_Garamond, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import "./globals.css"
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+})
+
+const serif = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://leonardoalcala.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://leonardoalcala-website.vercel.app"
+  ),
   title: {
-    default: "Leonardo Alcala - Technology, Writing and Creativity",
+    default: "Leonardo Alcala — Essays, Notes, Projects",
     template: "%s | Leonardo Alcala",
   },
   description:
-    "I build digital experiences and share ideas about technology, programming, productivity and storytelling.",
+    "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
   keywords: [
     "Leonardo Alcala",
-    "Developer",
-    "Portfolio",
-    "Blog",
     "Technology",
-    "Programming",
-    "Productivity",
-    "Storytelling",
+    "Writing",
+    "Personal Brand",
+    "Editorial",
+    "Essays",
+    "Projects",
+    "Notes",
   ],
   authors: [{ name: "Leonardo Alcala" }],
   creator: "Leonardo Alcala",
@@ -35,16 +45,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    title: "Leonardo Alcala - Technology, Writing and Creativity",
+    title: "Leonardo Alcala — Essays, Notes, Projects",
     description:
-      "I build digital experiences and share ideas about technology, programming, productivity and storytelling.",
+      "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
     siteName: "Leonardo Alcala",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Leonardo Alcala - Technology, Writing and Creativity",
+    title: "Leonardo Alcala — Essays, Notes, Projects",
     description:
-      "I build digital experiences and share ideas about technology, programming, productivity and storytelling.",
+      "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
     creator: "@leonardoalcala",
   },
   robots: {
@@ -62,8 +72,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
-    { media: "(prefers-color-scheme: dark)", color: "#171717" },
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF7" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -76,7 +86,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="bg-background">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${serif.variable} font-sans antialiased text-foreground selection:bg-primary/10 selection:text-foreground`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

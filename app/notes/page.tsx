@@ -7,7 +7,7 @@ import type { Note } from "@/lib/types"
 export const metadata: Metadata = {
   title: "Notes",
   description:
-    "Short thoughts, ideas, and reflections - a digital garden of notes.",
+    "Short thoughts, ideas, and reflections in a calm, editorial space.",
 }
 
 const demoNotes: Note[] = [
@@ -87,7 +87,7 @@ export default async function NotesPage() {
             Notes
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Short thoughts, ideas, and reflections. A digital garden where I
+            Short thoughts, ideas, and reflections. A calm place where I
             plant seeds of ideas.
           </p>
         </header>

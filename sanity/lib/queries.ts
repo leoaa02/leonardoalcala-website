@@ -89,7 +89,32 @@ export const notesQuery = groq`
     _id,
     content,
     publishedAt,
+    featured,
     "tags": tags[]->{ _id, title, slug }
+  }
+`
+
+// Reading
+export const readingQuery = groq`
+  *[_type == "reading"] | order(publishedAt desc) {
+    _id,
+    title,
+    author,
+    description,
+    href,
+    external,
+    coverImage,
+    featured
+  }
+`
+
+export const nowPageQuery = groq`
+  *[_type == "nowPage"] | order(updatedAt desc)[0] {
+    _id,
+    title,
+    subtitle,
+    updatedAt,
+    content
   }
 `
 

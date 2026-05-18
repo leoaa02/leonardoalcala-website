@@ -73,5 +73,25 @@ export interface Note {
   _id: string
   content: string
   publishedAt: string
+  featured?: boolean
   tags?: Tag[]
+}
+
+export interface Reading {
+  _id: string
+  title: string
+  author?: string
+  description?: string
+  href: string
+  external?: boolean
+  coverImage?: SanityImage
+  featured?: boolean
+}
+
+export interface NowPage {
+  _id: string
+  title: string
+  subtitle?: string
+  updatedAt?: string
+  content?: PortableTextBlock[]
 }

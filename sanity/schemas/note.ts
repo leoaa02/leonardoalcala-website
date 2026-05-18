@@ -22,6 +22,12 @@ const note = {
       type: "array",
       of: [{ type: "reference", to: { type: "tag" } }],
     },
+    {
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      initialValue: false,
+    },
   ],
   preview: {
     select: {

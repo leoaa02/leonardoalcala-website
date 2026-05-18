@@ -4,29 +4,31 @@ import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
-    <section className="relative py-20 md:py-32">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+    <section className="relative overflow-hidden py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="text-sm uppercase tracking-[0.32em] text-muted-foreground">
+            Minimal editorial essays and ideas
+          </p>
+          <h1 className="mt-6 font-serif text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             Leonardo Alcala
           </h1>
-          <p className="mt-4 font-serif text-xl italic text-primary sm:text-2xl">
-            Technology, writing and creativity.
+          <p className="mt-6 text-2xl leading-10 text-muted-foreground sm:text-3xl">
+            Building ideas, one article at a time.
           </p>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            I build digital experiences and share ideas about technology,
-            programming, productivity and storytelling. Welcome to my corner of
-            the internet where I document my journey and discoveries.
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground">
+            I write about technology, software development, artificial intelligence, marketing, creativity, and the process of building a meaningful career and life.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
+
+          <div className="mt-10 flex flex-wrap gap-4">
             <Button asChild size="lg">
-              <Link href="/projects">
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <Link href="/blog">
+                Read Essays
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/blog">Read Blog</Link>
+              <Link href="/projects">View Projects</Link>
             </Button>
           </div>
         </div>
