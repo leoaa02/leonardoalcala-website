@@ -49,13 +49,15 @@ export const metadata: Metadata = {
     description:
       "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
     siteName: "Leonardo Alcala",
+    images: ["/images/leonardo-alcala.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Leonardo Alcala — Essays, Notes, Projects",
     description:
       "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
-    creator: "@leonardoalcala",
+    creator: "@leoaa02",
+    images: ["/images/leonardo-alcala.jpg"],
   },
   robots: {
     index: true,

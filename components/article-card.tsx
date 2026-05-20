@@ -12,14 +12,14 @@ interface ArticleCardProps {
 export function ArticleCard({ post, featured = false }: ArticleCardProps) {
   return (
     <article
-      className={`group overflow-hidden rounded-[1.75rem] border border-border bg-white transition duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
+      className={`group overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white/80 text-zinc-900 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950/80 dark:text-zinc-100 ${
         featured ? "lg:flex lg:items-stretch" : ""
       }`}
     >
       {post.mainImage && (
         <Link
           href={`/blog/${post.slug.current}`}
-          className={`relative overflow-hidden bg-muted ${
+          className={`relative overflow-hidden bg-zinc-100 dark:bg-zinc-900 ${
             featured ? "lg:w-[45%]" : "aspect-[16/9]"
           }`}
         >
@@ -57,21 +57,21 @@ export function ArticleCard({ post, featured = false }: ArticleCardProps) {
           </Link>
 
           {post.excerpt && (
-            <p className="text-sm leading-7 text-muted-foreground line-clamp-3">
+            <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-400 line-clamp-3">
               {post.excerpt}
             </p>
           )}
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+        <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
           {post.publishedAt && (
-            <time dateTime={post.publishedAt} className="font-medium text-muted-foreground">
+            <time dateTime={post.publishedAt} className="font-medium text-zinc-600 dark:text-zinc-400">
               {format(new Date(post.publishedAt), "MMMM d, yyyy")}
             </time>
           )}
 
           {post.readingTime && (
-            <span className="font-medium text-muted-foreground">{post.readingTime} min read</span>
+            <span className="font-medium text-zinc-600 dark:text-zinc-400">{post.readingTime} min read</span>
           )}
 
           <Link

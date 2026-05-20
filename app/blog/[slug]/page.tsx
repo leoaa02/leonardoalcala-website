@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
 import { ArrowLeft, Clock } from "lucide-react"
@@ -15,163 +16,14 @@ import type { Post } from "@/lib/types"
 interface PageProps {
   params: Promise<{ slug: string }>
 }
-
-// Demo post for when Sanity is not configured
-const demoPost: Post = {
-  _id: "demo",
-  title: "Building Modern Web Applications with Next.js 15",
-  slug: { _type: "slug", current: "building-modern-web-apps" },
-  excerpt:
-    "Explore the latest features in Next.js 15 and learn how to build performant, scalable web applications with the App Router.",
-  publishedAt: new Date().toISOString(),
-  readingTime: 8,
-  categories: [
-    { _id: "cat1", title: "Development", slug: { _type: "slug", current: "development" } },
-  ],
-  tags: [
-    { _id: "tag1", title: "Next.js", slug: { _type: "slug", current: "nextjs" } },
-    { _id: "tag2", title: "React", slug: { _type: "slug", current: "react" } },
-  ],
-  author: {
-    _id: "author1",
-    name: "Leonardo Alcala",
-  },
-  body: [
-    {
-      _type: "block",
-      _key: "1",
-      style: "normal",
-      children: [
-        {
-          _type: "span",
-          _key: "1a",
-          text: "Next.js 15 brings significant improvements to the developer experience and performance. In this article, we will explore the key features and how to leverage them in your projects.",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "2",
-      style: "h2",
-      children: [
-        {
-          _type: "span",
-          _key: "2a",
-          text: "The App Router",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "3",
-      style: "normal",
-      children: [
-        {
-          _type: "span",
-          _key: "3a",
-          text: "The App Router is a new paradigm for building React applications. It leverages React Server Components and provides a more intuitive way to handle routing, layouts, and data fetching.",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "4",
-      style: "h2",
-      children: [
-        {
-          _type: "span",
-          _key: "4a",
-          text: "Server Components",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "5",
-      style: "normal",
-      children: [
-        {
-          _type: "span",
-          _key: "5a",
-          text: "React Server Components allow you to render components on the server, reducing the JavaScript sent to the client and improving performance. They also enable direct database access and other server-side operations.",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "6",
-      style: "h2",
-      children: [
-        {
-          _type: "span",
-          _key: "6a",
-          text: "Improved Caching",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "7",
-      style: "normal",
-      children: [
-        {
-          _type: "span",
-          _key: "7a",
-          text: "Next.js 15 introduces more granular caching controls with the new caching APIs. You can now use revalidateTag with cache profiles for stale-while-revalidate behavior.",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "8",
-      style: "h2",
-      children: [
-        {
-          _type: "span",
-          _key: "8a",
-          text: "Conclusion",
-        },
-      ],
-      markDefs: [],
-    },
-    {
-      _type: "block",
-      _key: "9",
-      style: "normal",
-      children: [
-        {
-          _type: "span",
-          _key: "9a",
-          text: "Next.js 15 represents a significant step forward in web development. The combination of the App Router, Server Components, and improved caching makes it easier than ever to build fast, scalable applications.",
-        },
-      ],
-      markDefs: [],
-    },
-  ],
-  relatedPosts: [
-    {
-      _id: "2",
-      title: "The Art of Writing Clean Code",
-      slug: { _type: "slug", current: "writing-clean-code" },
-      excerpt: "Learn principles and practices for writing maintainable, readable code.",
-      publishedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-  ],
-}
+export const dynamic = "force-dynamic"
+export const revalidate = 60
 
 async function getPost(slug: string): Promise<Post | null> {
   try {
-    const post = await client.fetch<Post>(postBySlugQuery, { slug })
-    return post || (slug === "building-modern-web-apps" ? demoPost : null)
+    return await client.fetch<Post>(postBySlugQuery, { slug })
   } catch {
-    return slug === "building-modern-web-apps" ? demoPost : null
+    return null
   }
 }
 
@@ -284,13 +136,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Featured Image */}
         {post.mainImage && (
-          <figure className="mt-10">
-            <img
-              src={urlFor(post.mainImage).width(1200).height(630).url()}
+          <div className="mt-10 overflow-hidden rounded-[2rem] bg-zinc-100 dark:bg-zinc-950">
+            <Image
+              src={urlFor(post.mainImage).width(1600).height(900).url()}
               alt={post.mainImage.alt || post.title}
-              className="rounded-lg"
+              width={1600}
+              height={900}
+              className="h-72 w-full object-cover sm:h-80"
             />
-          </figure>
+          </div>
         )}
 
         {/* Content with TOC */}

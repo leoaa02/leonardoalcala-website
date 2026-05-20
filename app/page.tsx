@@ -13,174 +13,42 @@ import {
 } from "@/sanity/lib/queries"
 import type { Note, Post, Project, Reading } from "@/lib/types"
 
-const demoPosts: Post[] = [
-  {
-    _id: "1",
-    title: "Building Modern Web Applications with Next.js 15",
-    slug: { _type: "slug", current: "building-modern-web-apps" },
-    excerpt:
-      "Explore the latest features in Next.js 15 and learn how to build performant, scalable web applications with the App Router.",
-    publishedAt: new Date().toISOString(),
-    readingTime: 8,
-    categories: [
-      { _id: "cat1", title: "Development", slug: { _type: "slug", current: "development" } },
-    ],
-  },
-  {
-    _id: "2",
-    title: "The Art of Writing Clean Code",
-    slug: { _type: "slug", current: "writing-clean-code" },
-    excerpt:
-      "Learn principles and practices for writing maintainable, readable code that stands the test of time.",
-    publishedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-    readingTime: 6,
-    categories: [
-      { _id: "cat2", title: "Programming", slug: { _type: "slug", current: "programming" } },
-    ],
-  },
-  {
-    _id: "3",
-    title: "Productivity Systems That Actually Work",
-    slug: { _type: "slug", current: "productivity-systems" },
-    excerpt:
-      "A deep dive into productivity methodologies and how to build sustainable habits for creative work.",
-    publishedAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
-    readingTime: 5,
-    categories: [
-      { _id: "cat3", title: "Productivity", slug: { _type: "slug", current: "productivity" } },
-    ],
-  },
-]
-
-const demoProjects: Project[] = [
-  {
-    _id: "1",
-    title: "E-Commerce Platform",
-    slug: { _type: "slug", current: "ecommerce-platform" },
-    description:
-      "A full-featured e-commerce platform built with Next.js, featuring inventory management, checkout, and merchant tooling.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-    projectUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    _id: "2",
-    title: "Task Management App",
-    slug: { _type: "slug", current: "task-management" },
-    description:
-      "A collaborative task management app with boards, priorities, and polished interactions for teams.",
-    technologies: ["React", "Node.js", "Socket.io"],
-    projectUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    _id: "3",
-    title: "Markdown Note Taking App",
-    slug: { _type: "slug", current: "markdown-notes" },
-    description:
-      "A minimal note-taking app with Markdown, tagging, and local-first storage for personal knowledge work.",
-    technologies: ["Electron", "React", "SQLite"],
-    projectUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-]
-
-const demoNotes: Note[] = [
-  {
-    _id: "1",
-    content:
-      "The best code is the code you don't have to write. Before starting any feature, ask yourself: is this really necessary?",
-    publishedAt: new Date().toISOString(),
-    tags: [
-      { _id: "tag1", title: "Programming", slug: { _type: "slug", current: "programming" } },
-    ],
-  },
-  {
-    _id: "2",
-    content:
-      "Time-blocking has improved my focus. Protecting deep work blocks is the difference between output and distraction.",
-    publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag2", title: "Productivity", slug: { _type: "slug", current: "productivity" } },
-    ],
-  },
-  {
-    _id: "3",
-    content:
-      "Sharing process matters. Writing about progress makes ideas clearer and helps others follow along.",
-    publishedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag3", title: "Writing", slug: { _type: "slug", current: "writing" } },
-    ],
-  },
-]
-
-const demoReadingList: Reading[] = [
-  {
-    _id: "1",
-    title: "Show Your Work!",
-    author: "Austin Kleon",
-    description:
-      "A practical guide to sharing process, making ideas visible, and building an audience through generosity.",
-    href: "https://en.wikipedia.org/wiki/Show_Your_Work!",
-    external: true,
-  },
-  {
-    _id: "2",
-    title: "The Almanack of Naval Ravikant",
-    author: "Eric Jorgenson",
-    description:
-      "Collected essays on wealth, happiness, and decision making that feel at home in an intellectual digital garden.",
-    href: "https://nav.al/almanack",
-    external: true,
-  },
-  {
-    _id: "3",
-    title: "Thinking, Fast and Slow",
-    author: "Daniel Kahneman",
-    description:
-      "A foundational look at how we think, decide, and develop habits — useful for builders, writers, and makers.",
-    href: "https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow",
-    external: true,
-  },
-]
+export const dynamic = "force-dynamic"
+export const revalidate = 60
 
 async function getPosts(): Promise<Post[]> {
   try {
     const posts = await client.fetch<Post[]>(featuredPostsQuery)
-    return posts && posts.length > 0 ? posts.slice(0, 3) : demoPosts
+    return posts?.slice(0, 3) ?? []
   } catch {
-    return demoPosts
+    return []
   }
 }
 
 async function getProjects(): Promise<Project[]> {
   try {
     const projects = await client.fetch<Project[]>(featuredProjectsQuery)
-    return projects && projects.length > 0 ? projects.slice(0, 3) : demoProjects
+    return projects?.slice(0, 3) ?? []
   } catch {
-    return demoProjects
+    return []
   }
 }
 
 async function getNotes(): Promise<Note[]> {
   try {
     const notes = await client.fetch<Note[]>(notesQuery)
-    return notes && notes.length > 0 ? notes.slice(0, 3) : demoNotes
+    return notes?.slice(0, 3) ?? []
   } catch {
-    return demoNotes
+    return []
   }
 }
 
 async function getReadingList(): Promise<Reading[]> {
   try {
     const readings = await client.fetch<Reading[]>(readingQuery)
-    return readings && readings.length > 0 ? readings.slice(0, 3) : demoReadingList
+    return readings?.slice(0, 3) ?? []
   } catch {
-    return demoReadingList
+    return []
   }
 }
 

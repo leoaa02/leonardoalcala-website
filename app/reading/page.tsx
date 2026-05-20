@@ -10,42 +10,15 @@ export const metadata: Metadata = {
   description: "Books, essays, and ideas I am exploring right now.",
 }
 
-const demoReadingList: Reading[] = [
-  {
-    _id: "1",
-    title: "The Fourth Turning",
-    author: "William Strauss & Neil Howe",
-    href: "https://en.wikipedia.org/wiki/The_Fourth_Turning",
-    description:
-      "A thoughtful essay on generational cycles, history, and how intellectual frameworks shape long-term decision-making.",
-    external: true,
-  },
-  {
-    _id: "2",
-    title: "The Road to Character",
-    author: "David Brooks",
-    href: "https://en.wikipedia.org/wiki/The_Road_to_Character",
-    description:
-      "A reflective look at values, craftsmanship, and what it takes to stay grounded while building a meaningful life.",
-    external: true,
-  },
-  {
-    _id: "3",
-    title: "Show Your Work!",
-    author: "Austin Kleon",
-    href: "https://en.wikipedia.org/wiki/Show_Your_Work!",
-    description:
-      "A practical guide for sharing process and progress with clarity and generosity, especially useful for writers and builders.",
-    external: true,
-  },
-]
+export const dynamic = "force-dynamic"
+export const revalidate = 60
 
 async function getReadingList(): Promise<Reading[]> {
   try {
     const readings = await client.fetch<Reading[]>(readingQuery)
-    return readings && readings.length > 0 ? readings : demoReadingList
+    return readings ?? []
   } catch {
-    return demoReadingList
+    return []
   }
 }
 

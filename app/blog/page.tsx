@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     "Articles about technology, programming, productivity, and storytelling.",
 }
 
+export const dynamic = "force-dynamic"
+export const revalidate = 60
+
 async function getData() {
   try {
     const [posts, categories, tags] = await Promise.all([

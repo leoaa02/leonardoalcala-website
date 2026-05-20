@@ -10,7 +10,7 @@ interface ReadingCardProps {
 
 export function ReadingCard({ title, author, description, href, external }: ReadingCardProps) {
   return (
-    <article className="group overflow-hidden rounded-3xl border border-border bg-white p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+    <article className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white/80 p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950/80">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground">Reading</p>

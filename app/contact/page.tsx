@@ -17,21 +17,15 @@ const socialLinks = [
   },
   {
     name: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/leoaa02",
     icon: Github,
-    description: "@leonardoalcala",
+    description: "@leoaa02",
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/leonardo-alcala-192042233",
     icon: Linkedin,
     description: "Leonardo Alcala",
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com",
-    icon: Twitter,
-    description: "@leonardoalcala",
   },
 ]
 

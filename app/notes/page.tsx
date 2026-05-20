@@ -10,69 +10,12 @@ export const metadata: Metadata = {
     "Short thoughts, ideas, and reflections in a calm, editorial space.",
 }
 
-const demoNotes: Note[] = [
-  {
-    _id: "1",
-    content:
-      "The best code is the code you don't have to write. Before starting any feature, ask yourself: is this really necessary? Sometimes the best solution is to simplify the problem.",
-    publishedAt: new Date().toISOString(),
-    tags: [
-      { _id: "tag1", title: "Programming", slug: { _type: "slug", current: "programming" } },
-    ],
-  },
-  {
-    _id: "2",
-    content:
-      "I've been experimenting with time-blocking lately. Dedicating specific hours to deep work has dramatically improved my productivity. The key is protecting those blocks from interruptions.",
-    publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag2", title: "Productivity", slug: { _type: "slug", current: "productivity" } },
-    ],
-  },
-  {
-    _id: "3",
-    content:
-      "Reading 'Show Your Work' by Austin Kleon. His point about sharing your process, not just the finished product, resonates with me. Documentation and transparency build trust.",
-    publishedAt: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag3", title: "Reading", slug: { _type: "slug", current: "reading" } },
-    ],
-  },
-  {
-    _id: "4",
-    content:
-      "The relationship between constraints and creativity is fascinating. Some of my best work has come from projects with strict limitations. Constraints force you to think differently.",
-    publishedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag4", title: "Creativity", slug: { _type: "slug", current: "creativity" } },
-    ],
-  },
-  {
-    _id: "5",
-    content:
-      "TypeScript tip: Use discriminated unions for state management. Having a 'status' field that determines the shape of your data makes impossible states unrepresentable.",
-    publishedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag5", title: "TypeScript", slug: { _type: "slug", current: "typescript" } },
-    ],
-  },
-  {
-    _id: "6",
-    content:
-      "Walking away from a problem often leads to the solution. The subconscious mind continues working on it. I've lost count of how many bugs I've solved while taking a shower.",
-    publishedAt: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(),
-    tags: [
-      { _id: "tag6", title: "Problem Solving", slug: { _type: "slug", current: "problem-solving" } },
-    ],
-  },
-]
-
 async function getNotes(): Promise<Note[]> {
   try {
     const notes = await client.fetch<Note[]>(notesQuery)
-    return notes && notes.length > 0 ? notes : demoNotes
+    return notes || []
   } catch {
-    return demoNotes
+    return []
   }
 }
 

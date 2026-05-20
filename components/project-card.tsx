@@ -8,9 +8,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+    <article className="group overflow-hidden rounded-[1.75rem] border border-zinc-200 bg-white/80 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950/80">
       {project.mainImage && (
-        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+        <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-zinc-900">
           <img
             src={urlFor(project.mainImage).width(800).height(500).url()}
             alt={project.mainImage.alt || project.title}
@@ -22,15 +22,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="space-y-3">
           <h3 className="font-serif text-xl font-semibold text-foreground">{project.title}</h3>
           {project.description && (
-            <p className="text-sm leading-7 text-muted-foreground line-clamp-4">
+            <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-400 line-clamp-4">
               {project.description}
             </p>
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2 text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
+        <div className="flex flex-wrap gap-2 text-xs font-medium uppercase tracking-[0.28em] text-zinc-600 dark:text-zinc-400">
           {project.technologies?.map((tech) => (
-            <span key={tech} className="rounded-full bg-muted px-3 py-1">
+            <span key={tech} className="rounded-full bg-zinc-100 px-3 py-1 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
               {tech}
             </span>
           ))}
