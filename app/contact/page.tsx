@@ -1,31 +1,30 @@
 import type { Metadata } from "next"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
-import { ContactForm } from "@/components/contact-form"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Leonardo Alcala - I'd love to hear from you.",
+    "Get in touch with Leonardo Alcala - email leonardoalcalaavi@gmail.com or connect on LinkedIn and GitHub.",
 }
 
-const socialLinks = [
+const contactLinks = [
   {
     name: "Email",
-    href: "mailto:hello@leonardoalcala.com",
+    href: "mailto:leonardoalcalaavi@gmail.com",
     icon: Mail,
-    description: "hello@leonardoalcala.com",
-  },
-  {
-    name: "GitHub",
-    href: "https://github.com/leoaa02",
-    icon: Github,
-    description: "@leoaa02",
+    description: "leonardoalcalaavi@gmail.com",
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/leonardo-alcala-192042233",
     icon: Linkedin,
-    description: "Leonardo Alcala",
+    description: "linkedin.com/in/leonardo-alcala-192042233",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/leoaa02",
+    icon: Github,
+    description: "github.com/leoaa02",
   },
 ]
 
@@ -35,48 +34,31 @@ export default function ContactPage() {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <header className="mb-12">
           <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">
-            Get in Touch
+            Contact
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Have a question, want to collaborate, or just say hello? I&apos;d love to
-            hear from you.
+          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+            If you want to get in touch, email me directly or connect with me on LinkedIn and GitHub.
           </p>
         </header>
 
-        <div className="grid gap-12 lg:grid-cols-5">
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <ContactForm />
-          </div>
-
-          {/* Social Links */}
-          <div className="lg:col-span-2">
-            <h2 className="font-serif text-xl font-semibold">Connect</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              You can also find me on these platforms.
-            </p>
-            <div className="mt-6 space-y-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition-colors hover:bg-muted"
-                >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                    <social.icon className="h-5 w-5 text-muted-foreground" />
-                  </div>
-                  <div>
-                    <div className="font-medium">{social.name}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {social.description}
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {contactLinks.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-[1.75rem] border border-border bg-card p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted text-muted-foreground transition group-hover:bg-primary group-hover:text-primary-foreground">
+                <item.icon className="h-5 w-5" />
+              </div>
+              <div className="mt-6 space-y-2">
+                <h2 className="text-lg font-semibold text-foreground">{item.name}</h2>
+                <p className="text-sm leading-7 text-muted-foreground">{item.description}</p>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </div>
