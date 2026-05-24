@@ -45,7 +45,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className="inline-flex items-center gap-2 text-primary transition hover:text-primary"
             >
               <ExternalLink className="h-4 w-4" />
-              View project
+              Live Demo
             </a>
           )}
           {project.githubUrl && (
@@ -56,7 +56,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className="inline-flex items-center gap-2 text-muted-foreground transition hover:text-foreground"
             >
               <Github className="h-4 w-4" />
-              Source
+              GitHub
             </a>
           )}
         </div>

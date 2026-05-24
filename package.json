@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "sanity:migrate-slugs": "node sanity/scripts/generate-note-slugs.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -4,6 +4,20 @@ const note = {
   type: "document",
   fields: [
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "content",
+        slugify: (input: string) =>
+          input
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^[-]+|[-]+$/g, "")
+            .slice(0, 200),
+      },
+    },
+    {
       name: "content",
       title: "Content",
       type: "text",

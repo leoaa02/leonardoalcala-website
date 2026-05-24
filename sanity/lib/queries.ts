@@ -87,6 +87,29 @@ export const featuredProjectsQuery = groq`
 export const notesQuery = groq`
   *[_type == "note"] | order(publishedAt desc) {
     _id,
+    slug,
+    content,
+    publishedAt,
+    featured,
+    "tags": tags[]->{ _id, title, slug }
+  }
+`
+
+export const noteByIdQuery = groq`
+  *[_type == "note" && _id == $id][0] {
+    _id,
+    slug,
+    content,
+    publishedAt,
+    featured,
+    "tags": tags[]->{ _id, title, slug }
+  }
+`
+
+export const noteBySlugQuery = groq`
+  *[_type == "note" && slug.current == $slug][0] {
+    _id,
+    slug,
     content,
     publishedAt,
     featured,

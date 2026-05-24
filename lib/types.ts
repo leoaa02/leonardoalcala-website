@@ -75,6 +75,7 @@ export interface Note {
   publishedAt: string
   featured?: boolean
   tags?: Tag[]
+  slug?: Slug
 }
 
 export interface Reading {

@@ -7,9 +7,6 @@ export function Hero() {
     <section className="relative overflow-hidden py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <p className="text-sm uppercase tracking-[0.32em] text-muted-foreground">
-            Minimal editorial essays and ideas
-          </p>
           <h1 className="mt-6 font-serif text-5xl font-semibold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             Leonardo Alcala
           </h1>

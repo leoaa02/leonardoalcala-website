@@ -13,11 +13,16 @@ export const metadata: Metadata = {
 async function getNotes(): Promise<Note[]> {
   try {
     const notes = await client.fetch<Note[]>(notesQuery)
+    // minimal debug: log number of notes fetched on server
+    console.info("[Notes] fetched", (notes || []).length, "items")
     return notes || []
   } catch {
+    console.error("[Notes] failed to fetch notes from Sanity")
     return []
   }
 }
+
+export const revalidate = 60
 
 export default async function NotesPage() {
   const notes = await getNotes()
@@ -36,36 +41,41 @@ export default async function NotesPage() {
         </header>
 
         <div className="space-y-8">
-          {notes.map((note) => (
-            <article
-              key={note._id}
-              className="rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-sm"
-            >
-              <p className="text-foreground leading-relaxed">{note.content}</p>
-              <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
-                {note.tags && note.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {note.tags.map((tag) => (
-                      <span
-                        key={tag._id}
-                        className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
-                      >
-                        {tag.title}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                {note.publishedAt && (
-                  <time
-                    dateTime={note.publishedAt}
-                    className="text-sm text-muted-foreground"
-                  >
-                    {format(new Date(note.publishedAt), "MMM d, yyyy")}
-                  </time>
-                )}
-              </div>
-            </article>
-          ))}
+          {notes.map((note) => {
+            const href = note.slug?.current ? `/notes/${note.slug.current}` : `/notes/id/${note._id}`
+            return (
+              <article
+                key={note._id}
+                className="rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-sm"
+              >
+                <a href={href} className="text-foreground no-underline">
+                  <p className="text-foreground leading-relaxed">{note.content}</p>
+                </a>
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+                  {note.tags && note.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {note.tags.map((tag) => (
+                        <span
+                          key={tag._id}
+                          className="rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
+                        >
+                          {tag.title}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {note.publishedAt && (
+                    <time
+                      dateTime={note.publishedAt}
+                      className="text-sm text-muted-foreground"
+                    >
+                      {format(new Date(note.publishedAt), "MMM d, yyyy")}
+                    </time>
+                  )}
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </div>
