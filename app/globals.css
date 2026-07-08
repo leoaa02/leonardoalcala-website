@@ -46,6 +46,14 @@
 }
 
 .dark {
+  --paper: #12110e;
+  --paper-alt: #1b1712;
+  --ink: #f2e9db;
+  --ink-soft: #b5a48a;
+  --rule: #3b342b;
+  --green: #7d9567;
+  --rust: #c97849;
+  --gold: #d2a64b;
   --background: var(--paper);
   --foreground: var(--ink);
   --card: var(--paper-alt);
@@ -119,6 +127,11 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
   }
 
   body {
