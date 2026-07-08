@@ -70,7 +70,7 @@ export default async function NowPage() {
         />
 
         <div className="mt-12 space-y-10">
-          <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
+          <div className="border border-[var(--rule)] bg-[var(--paper)] p-8">
             <PortableTextRenderer value={nowPage.content ?? []} />
           </div>
         </div>

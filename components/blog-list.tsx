@@ -59,13 +59,11 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
 
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
-      {/* Sidebar */}
       <aside className="lg:w-64 lg:shrink-0">
         <div className="sticky top-24 space-y-8">
-          {/* Search */}
           <div>
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--ink-soft)]" />
               <Input
                 type="search"
                 placeholder="Search articles..."
@@ -74,15 +72,14 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
                   setSearchQuery(e.target.value)
                   setCurrentPage(1)
                 }}
-                className="pl-9"
+                className="border-[var(--rule)] bg-[var(--paper)] pl-9 text-[var(--ink)]"
               />
             </div>
           </div>
 
-          {/* Categories */}
           {categories.length > 0 && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="mb-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">
                 Categories
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -90,10 +87,10 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
                   <button
                     key={category._id}
                     onClick={() => handleCategoryClick(category._id)}
-                    className={`rounded-full px-3 py-1 text-sm transition-colors ${
+                    className={`border px-3 py-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] transition-colors ${
                       selectedCategory === category._id
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                        ? "border-[var(--green)] bg-[var(--green)] text-[var(--paper)]"
+                        : "border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] hover:border-[var(--green)] hover:text-[var(--ink)]"
                     }`}
                   >
                     {category.title}
@@ -103,10 +100,9 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
             </div>
           )}
 
-          {/* Tags */}
           {tags.length > 0 && (
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h3 className="mb-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">
                 Tags
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -114,10 +110,10 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
                   <button
                     key={tag._id}
                     onClick={() => handleTagClick(tag._id)}
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
+                    className={`border px-3 py-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] transition-colors ${
                       selectedTag === tag._id
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border text-muted-foreground hover:border-primary/50"
+                        ? "border-[var(--rust)] bg-[var(--rust)] text-[var(--paper)]"
+                        : "border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] hover:border-[var(--rust)] hover:text-[var(--ink)]"
                     }`}
                   >
                     {tag.title}
@@ -129,55 +125,47 @@ export function BlogList({ posts, categories, tags }: BlogListProps) {
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="flex-1">
         {paginatedPosts.length === 0 ? (
-          <div className="rounded-lg border border-border bg-card p-8 text-center">
-            <p className="text-muted-foreground">
-              No articles found matching your criteria.
-            </p>
+          <div className="border border-[var(--rule)] bg-[var(--paper)] p-8 text-center">
+            <p className="text-[var(--ink-soft)]">No articles found matching your criteria.</p>
           </div>
         ) : (
           <>
-            <div className="grid gap-10">
-              {paginatedPosts.map((post) => (
-                <ArticleCard key={post._id} post={post} />
+            <div className="grid gap-6">
+              {paginatedPosts.map((post, index) => (
+                <ArticleCard key={post._id} post={post} accentIndex={index} />
               ))}
             </div>
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="mt-12 flex items-center justify-center gap-2">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-muted disabled:opacity-50 disabled:hover:bg-transparent"
+                  className="border border-[var(--rule)] bg-[var(--paper)] px-4 py-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--ink-soft)] transition hover:bg-[var(--paper-alt)] disabled:opacity-50"
                 >
                   Previous
                 </button>
                 <div className="flex items-center gap-1">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page)}
-                        className={`h-8 w-8 rounded-md text-sm font-medium transition-colors ${
-                          currentPage === page
-                            ? "bg-primary text-primary-foreground"
-                            : "hover:bg-muted"
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    )
-                  )}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`h-8 w-8 border font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] transition ${
+                        currentPage === page
+                          ? "border-[var(--green)] bg-[var(--green)] text-[var(--paper)]"
+                          : "border-[var(--rule)] bg-[var(--paper)] text-[var(--ink-soft)] hover:border-[var(--green)] hover:text-[var(--ink)]"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
                 </div>
                 <button
-                  onClick={() =>
-                    setCurrentPage((p) => Math.min(totalPages, p + 1))
-                  }
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-muted disabled:opacity-50 disabled:hover:bg-transparent"
+                  className="border border-[var(--rule)] bg-[var(--paper)] px-4 py-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--ink-soft)] transition hover:bg-[var(--paper-alt)] disabled:opacity-50"
                 >
                   Next
                 </button>

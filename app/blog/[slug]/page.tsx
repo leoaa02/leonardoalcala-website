@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center gap-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--ink-soft)] hover:text-[var(--green)]"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Blog
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {post.categories.map((category) => (
                 <span
                   key={category._id}
-                  className="text-sm font-medium uppercase tracking-wider text-primary"
+                  className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]"
                 >
                   {category.title}
                 </span>
@@ -104,11 +104,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           )}
 
-          <h1 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h1 className="font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.01em] sm:text-4xl md:text-5xl">
             {post.title}
           </h1>
 
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-[var(--ink-soft)]">
             {post.author && <span>By {post.author.name}</span>}
             {post.publishedAt && (
               <>
@@ -136,7 +136,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Featured Image */}
         {post.mainImage && (
-          <div className="mt-10 overflow-hidden rounded-[2rem] bg-zinc-100 dark:bg-zinc-950">
+          <div className="mt-10 overflow-hidden border border-[var(--rule)] bg-[var(--paper-alt)]">
             <Image
               src={urlFor(post.mainImage).width(1600).height(900).url()}
               alt={post.mainImage.alt || post.title}
@@ -155,13 +155,13 @@ export default async function BlogPostPage({ params }: PageProps) {
 
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
-              <div className="mt-12 border-t border-border pt-8">
+              <div className="mt-12 border-t border-[var(--rule)] pt-8">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm text-muted-foreground">Tags:</span>
+                  <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">Tags:</span>
                   {post.tags.map((tag) => (
                     <span
                       key={tag._id}
-                      className="rounded-full border border-border px-3 py-1 text-sm text-muted-foreground"
+                      className="border border-[var(--rule)] bg-[var(--paper)] px-3 py-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--ink-soft)]"
                     >
                       {tag.title}
                     </span>
@@ -181,8 +181,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Related Posts */}
         {post.relatedPosts && post.relatedPosts.length > 0 && (
-          <section className="mt-16 border-t border-border pt-12">
-            <h2 className="font-serif text-2xl font-semibold">Related Articles</h2>
+          <section className="mt-16 border-t border-[var(--rule)] pt-12">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl font-medium">Related Articles</h2>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {post.relatedPosts.map((relatedPost) => (
                 <ArticleCard key={relatedPost._id} post={relatedPost} />

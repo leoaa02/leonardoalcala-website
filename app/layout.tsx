@@ -1,21 +1,30 @@
 import type { Metadata, Viewport } from "next"
-import { Cormorant_Garamond, Inter } from "next/font/google"
+import { Newsreader, Lora, IBM_Plex_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import "./globals.css"
 
-const inter = Inter({
+const display = Newsreader({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-display-stack",
+  weight: ["400", "500", "600"],
   display: "swap",
 })
 
-const serif = Cormorant_Garamond({
+const body = Lora({
   subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-body-stack",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  display: "swap",
+})
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono-stack",
+  weight: ["400", "500"],
   display: "swap",
 })
 
@@ -41,6 +50,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Leonardo Alcala" }],
   creator: "Leonardo Alcala",
+  icons: [{ rel: "icon", url: "/A.png" }],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -89,7 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="bg-background">
       <body
-        className={`${inter.variable} ${serif.variable} font-sans antialiased text-foreground selection:bg-primary/10 selection:text-foreground`}
+        className={`${display.variable} ${body.variable} ${mono.variable} font-sans antialiased text-foreground selection:bg-[var(--green)]/10 selection:text-foreground`}
       >
         <ThemeProvider
           attribute="class"

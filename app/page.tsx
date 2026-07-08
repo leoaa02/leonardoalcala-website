@@ -66,7 +66,7 @@ export default async function HomePage() {
 
       <FeaturedArticles posts={posts} />
 
-      <section className="border-t border-border bg-background/75 py-16 md:py-24">
+      <section className="border-t border-[var(--rule)] bg-[var(--paper-alt)] py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Notes"
@@ -75,16 +75,17 @@ export default async function HomePage() {
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {notes.map((note) => (
+            {notes.map((note, index) => (
               <article
                 key={note._id}
-                className="rounded-[1.75rem] border border-border bg-card p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                className="relative border border-[var(--rule)] bg-[var(--paper)] p-6 transition duration-200 hover:-translate-y-0.5"
               >
-                <p className="text-sm leading-7 text-muted-foreground">{note.content}</p>
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
+                <div className="absolute inset-x-0 top-0 h-[2px]" style={{ backgroundColor: ["var(--green)", "var(--rust)", "var(--gold)"][index % 3] }} />
+                <p className="text-sm leading-7 text-[var(--ink-soft)]">{note.content}</p>
+                <div className="mt-6 flex flex-wrap items-center justify-between gap-3 text-[11px] uppercase tracking-[0.14em] text-[var(--ink-soft)]">
                   <span>{new Date(note.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
                   {note.tags?.length ? (
-                    <span className="rounded-full border border-border bg-muted px-3 py-1 text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground">
+                    <span className="border border-[var(--rule)] bg-[var(--paper-alt)] px-3 py-1 text-[10px]">
                       {note.tags[0].title}
                     </span>
                   ) : null}
@@ -94,17 +95,14 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-10 flex justify-end">
-            <Link
-              href="/notes"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-primary transition hover:bg-muted"
-            >
+            <Link href="/notes" className="border border-[var(--rule)] bg-[var(--paper)] px-5 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--green)] transition hover:bg-[var(--paper-alt)]">
               View all notes
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border py-16 md:py-24">
+      <section className="border-t border-[var(--rule)] py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Projects"
@@ -113,23 +111,20 @@ export default async function HomePage() {
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project._id} project={project} />
+            {projects.map((project, index) => (
+              <ProjectCard key={project._id} project={project} accentIndex={index} />
             ))}
           </div>
 
           <div className="mt-10 flex justify-end">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-medium text-primary transition hover:bg-muted"
-            >
+            <Link href="/projects" className="border border-[var(--rule)] bg-[var(--paper)] px-5 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--green)] transition hover:bg-[var(--paper-alt)]">
               View all projects
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border bg-background/75 py-16 md:py-24">
+      <section className="border-t border-[var(--rule)] bg-[var(--paper-alt)] py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Reading"
@@ -138,33 +133,27 @@ export default async function HomePage() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {readingList.map((item) => (
-              <ReadingCard key={item._id} {...item} />
+            {readingList.map((item, index) => (
+              <ReadingCard key={item._id} {...item} accentIndex={index} />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border py-16 md:py-24">
+      <section className="border-t border-[var(--rule)] py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[2rem] border border-border bg-card p-10 text-center shadow-sm">
-            <h2 className="font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <div className="border border-[var(--rule)] bg-[var(--paper)] p-10 text-center">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl font-medium tracking-[-0.01em] text-[var(--ink)] sm:text-4xl">
               Join the newsletter
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-[var(--ink-soft)]">
               I’m building a thoughtful space for essays, notes, and ideas. If you want to stay updated, reach out and I’ll let you know when new work is published.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
-              >
+              <Link href="/contact" className="inline-flex items-center justify-center border border-[var(--ink)] bg-[var(--ink)] px-6 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--paper)] transition hover:bg-[var(--green)]">
                 Contact me
               </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-primary transition hover:bg-muted"
-              >
+              <Link href="/blog" className="inline-flex items-center justify-center border border-[var(--ink)] bg-transparent px-6 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--ink)] transition hover:bg-[var(--paper-alt)]">
                 Browse essays
               </Link>
             </div>

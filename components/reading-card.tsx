@@ -6,32 +6,38 @@ interface ReadingCardProps {
   description?: string
   href: string
   external?: boolean
+  accentIndex?: number
 }
 
-export function ReadingCard({ title, author, description, href, external }: ReadingCardProps) {
+const accentColors = ["var(--green)", "var(--rust)", "var(--gold)"]
+
+export function ReadingCard({ title, author, description, href, external, accentIndex = 0 }: ReadingCardProps) {
+  const accentColor = accentColors[accentIndex % accentColors.length]
+
   return (
-    <article className="group overflow-hidden rounded-3xl border border-zinc-200 bg-white/80 p-6 transition duration-200 hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950/80">
-      <div className="flex items-center justify-between gap-4">
+    <article className="group relative overflow-hidden border border-[var(--rule)] bg-[var(--paper)] p-6 transition duration-200 hover:-translate-y-0.5">
+      <div className="absolute inset-x-0 top-0 h-[3px]" style={{ backgroundColor: accentColor }} />
+      <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground">Reading</p>
-          <h3 className="mt-3 font-serif text-xl font-semibold text-foreground">
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">Reading</p>
+          <h3 className="mt-3 font-[family-name:var(--font-display)] text-xl font-medium text-[var(--ink)]">
             {title}
           </h3>
         </div>
         {author ? (
-          <span className="text-sm font-medium uppercase tracking-[0.24em] text-primary">
+          <span className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--ink-soft)]">
             {author}
           </span>
         ) : null}
       </div>
       {description ? (
-        <p className="mt-4 text-sm leading-7 text-muted-foreground">{description}</p>
+        <p className="mt-4 text-sm leading-7 text-[var(--ink-soft)]">{description}</p>
       ) : null}
       <Link
         href={href}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="mt-6 inline-flex items-center text-sm font-medium text-primary transition-colors hover:text-primary"
+        className="mt-6 inline-flex items-center font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.14em] text-[var(--green)] transition-colors hover:text-[var(--rust)]"
       >
         Learn more
       </Link>

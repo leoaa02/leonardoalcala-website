@@ -42,10 +42,13 @@ export default async function BlogPage() {
     <div className="py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <header className="mb-12">
-          <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">
+          <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">
+            Essays
+          </p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.01em] sm:text-5xl">
             Blog
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-lg text-[var(--ink-soft)]">
             Thoughts on technology, programming, productivity, and the art of
             storytelling.
           </p>

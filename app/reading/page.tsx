@@ -35,8 +35,8 @@ export default async function ReadingPage() {
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {readingList.map((item) => (
-            <ReadingCard key={item._id} {...item} />
+          {readingList.map((item, index) => (
+            <ReadingCard key={item._id} {...item} accentIndex={index} />
           ))}
         </div>
       </div>

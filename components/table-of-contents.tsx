@@ -66,8 +66,8 @@ export function TableOfContents({ content }: TableOfContentsProps) {
   if (headings.length === 0) return null
 
   return (
-    <nav className="sticky top-24">
-      <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+    <nav className="sticky top-24 rounded border border-[var(--rule)] bg-[var(--paper)] p-4">
+      <h4 className="mb-4 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">
         On this page
       </h4>
       <ul className="space-y-2">
@@ -83,10 +83,10 @@ export function TableOfContents({ content }: TableOfContentsProps) {
                 const element = document.getElementById(heading.id)
                 element?.scrollIntoView({ behavior: "smooth" })
               }}
-              className={`block text-sm transition-colors hover:text-foreground ${
+              className={`block text-sm transition-colors hover:text-[var(--ink)] ${
                 activeId === heading.id
-                  ? "font-medium text-primary"
-                  : "text-muted-foreground"
+                  ? "font-medium text-[var(--green)]"
+                  : "text-[var(--ink-soft)]"
               }`}
             >
               {heading.text}

@@ -9,14 +9,14 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-[var(--rule)] bg-[var(--paper)]">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
           <div className="space-y-4">
-            <Link href="/" className="font-serif text-2xl font-semibold tracking-tight text-foreground">
+            <Link href="/" className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-[-0.01em] text-[var(--ink)]">
               Leonardo Alcala
             </Link>
-            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+            <p className="max-w-2xl text-sm leading-7 text-[var(--ink-soft)]">
               A calm, editorial space for essays, notes, and thoughtful work on technology,
               creativity, and meaningful living.
             </p>
@@ -24,28 +24,25 @@ export function Footer() {
 
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground">Navigation</p>
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">Navigation</p>
               <div className="flex flex-wrap gap-3">
                 {navigationItems.slice(0, 5).map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]"
                   >
                     {link.name}
                   </Link>
                 ))}
-                <Link
-                  href="/contact"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
+                <Link href="/contact" className="text-sm text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]">
                   Contact
                 </Link>
               </div>
             </div>
 
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-[0.32em] text-muted-foreground">Connect</p>
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--rust)]">Connect</p>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social) => (
                   <a
@@ -53,7 +50,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]"
                   >
                     <span className="sr-only">{social.name}</span>
                     <social.icon className="h-5 w-5" />
@@ -64,10 +61,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-border pt-8 text-sm text-muted-foreground">
-          <p>
-            &copy; {new Date().getFullYear()} Leonardo Alcala. All rights reserved.
-          </p>
+        <div className="mt-10 border-t border-[var(--rule)] pt-8 text-sm text-[var(--ink-soft)]">
+          <p>&copy; {new Date().getFullYear()} Leonardo Alcala. All rights reserved.</p>
         </div>
       </div>
     </footer>
