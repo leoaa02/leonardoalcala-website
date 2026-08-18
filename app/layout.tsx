@@ -33,16 +33,20 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://leonardoalcala-website.vercel.app"
   ),
   title: {
-    default: "Leonardo Alcala — Essays, Notes, Projects",
+    default: "Leonardo Alcala — Frontend Developer",
     template: "%s | Leonardo Alcala",
   },
   description:
-    "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
+    "Leonardo Alcala is a frontend developer building thoughtful, modern web experiences with React and Next.js — and an editorial space for essays, notes, and projects.",
   keywords: [
     "Leonardo Alcala",
+    "Frontend Developer",
+    "React",
+    "Next.js",
+    "JavaScript",
+    "TypeScript",
     "Technology",
     "Writing",
-    "Personal Brand",
     "Editorial",
     "Essays",
     "Projects",
@@ -55,17 +59,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    title: "Leonardo Alcala — Essays, Notes, Projects",
+    title: "Leonardo Alcala — Frontend Developer",
     description:
-      "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
+      "Leonardo Alcala is a frontend developer building thoughtful, modern web experiences with React and Next.js — and an editorial space for essays, notes, and projects.",
     siteName: "Leonardo Alcala",
     images: ["/images/leonardo-alcala.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Leonardo Alcala — Essays, Notes, Projects",
+    title: "Leonardo Alcala — Frontend Developer",
     description:
-      "A premium editorial site exploring technology, creativity, AI, marketing, and meaningful living.",
+      "Leonardo Alcala is a frontend developer building thoughtful, modern web experiences with React and Next.js — and an editorial space for essays, notes, and projects.",
     creator: "@leoaa02",
     images: ["/images/leonardo-alcala.jpg"],
   },

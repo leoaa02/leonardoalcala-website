@@ -64,6 +64,28 @@ export default async function HomePage() {
     <>
       <Hero />
 
+      <section className="border-t border-[var(--rule)] py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Work"
+            title="Selected projects"
+            description="A handpicked portfolio of projects that demonstrate craftsmanship, attention to detail, and thoughtful frontend development."
+          />
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {projects.map((project, index) => (
+              <ProjectCard key={project._id} project={project} accentIndex={index} />
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-end">
+            <Link href="/projects" className="border border-[var(--rule)] bg-[var(--paper)] px-5 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--green)] transition hover:bg-[var(--paper-alt)]">
+              View all projects
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <FeaturedArticles posts={posts} />
 
       <section className="border-t border-[var(--rule)] bg-[var(--paper-alt)] py-16 md:py-24">
@@ -97,28 +119,6 @@ export default async function HomePage() {
           <div className="mt-10 flex justify-end">
             <Link href="/notes" className="border border-[var(--rule)] bg-[var(--paper)] px-5 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--green)] transition hover:bg-[var(--paper-alt)]">
               View all notes
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-[var(--rule)] py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Projects"
-            title="Selected work and experiments"
-            description="A handpicked portfolio of projects that demonstrate craftsmanship, attention to detail, and thoughtful product design."
-          />
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {projects.map((project, index) => (
-              <ProjectCard key={project._id} project={project} accentIndex={index} />
-            ))}
-          </div>
-
-          <div className="mt-10 flex justify-end">
-            <Link href="/projects" className="border border-[var(--rule)] bg-[var(--paper)] px-5 py-3 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[0.16em] text-[var(--green)] transition hover:bg-[var(--paper-alt)]">
-              View all projects
             </Link>
           </div>
         </div>

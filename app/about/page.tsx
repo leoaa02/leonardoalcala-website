@@ -7,20 +7,29 @@ import type { Author } from "@/lib/types"
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Discover Leonardo Alcala — frontend developer, QA tester, and aspiring journalist building thoughtful digital experiences.",
+    "Leonardo Alcala is a frontend developer focused on building thoughtful digital experiences with React, Next.js and modern web technologies.",
 }
 
 const defaultAuthor: Author = {
   _id: "default",
   name: "Leonardo Alcala",
   skills: [
-    "Frontend Development (HTML, CSS, JavaScript, TypeScript, React, Next.js)",
-    "Manual QA Testing",
+    "React",
+    "Next.js",
+    "JavaScript",
+    "TypeScript",
+    "HTML & CSS",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Git & GitHub",
+    "Sanity CMS",
     "Responsive Web Design",
     "UI/UX Principles",
+    "Manual QA Testing",
     "MySQL Databases",
     "Python Fundamentals",
-    "Sanity CMS",
     "SEO Optimization",
     "Technical Writing",
     "Research and Analysis",
@@ -46,7 +55,7 @@ const defaultAuthor: Author = {
     "Faith and Spiritual Growth",
   ],
   careerGoals:
-    "I am a multidisciplinary professional with a strong interest in software development, quality assurance, journalism, and creative writing. I enjoy building elegant web experiences, analyzing complex topics, and telling stories that have a meaningful impact.",
+    "I'm a frontend developer focused on building thoughtful digital experiences with React, Next.js and modern web technologies. My background in QA testing, writing and journalism influences the way I approach interfaces — not only how they work, but how they communicate.",
 }
 
 async function getAuthor(): Promise<Author> {
@@ -60,6 +69,7 @@ async function getAuthor(): Promise<Author> {
 
 export default async function AboutPage() {
   const author = await getAuthor()
+  const skills = author.skills && author.skills.length > 0 ? author.skills : defaultAuthor.skills ?? []
 
   return (
     <div className="py-16 md:py-24">
@@ -69,13 +79,17 @@ export default async function AboutPage() {
             About
           </p>
           <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-medium tracking-[-0.01em] sm:text-5xl">
-            Frontend Developer, QA Tester & Aspiring Journalist
+            Frontend Developer
           </h1>
+          <p className="mt-3 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]">
+            QA Tester &middot; Aspiring Journalist
+          </p>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--ink-soft)]">
-            I am passionate about building meaningful digital experiences and
-            telling stories that inform, inspire, and connect people. My work
-            combines technology, quality assurance, and a deep interest in
-            journalism, writing, and communication.
+            I'm a frontend developer focused on building thoughtful digital
+            experiences with React, Next.js and modern web technologies. My
+            background in QA testing, writing and journalism influences the
+            way I approach interfaces — not only how they work, but how they
+            communicate.
           </p>
         </header>
 
@@ -87,16 +101,16 @@ export default async function AboutPage() {
               </h2>
               <div className="mt-6 space-y-4 text-[var(--ink-soft)]">
                 <p>
-                  I am a multidisciplinary professional with a strong interest in
-                  software development, quality assurance, journalism, and creative
-                  writing. I enjoy building elegant web experiences, analyzing
-                  complex topics, and telling stories that have a meaningful impact.
+                  I'm a frontend developer focused on building thoughtful digital
+                  experiences with React, Next.js and modern web technologies. I
+                  enjoy translating ideas into interfaces that are fast, accessible,
+                  and easy to use.
                 </p>
                 <p>
-                  My work combines technical craft with a thoughtful editorial
-                  perspective. I approach each project with clarity, precision,
-                  and a desire to connect people through useful, well-designed
-                  digital experiences.
+                  My background in QA testing, writing and journalism influences
+                  the way I approach interfaces — not only how they work, but how
+                  they communicate. I approach each project with clarity,
+                  precision, and a strong eye for design and user experience.
                 </p>
               </div>
             </section>
@@ -111,24 +125,7 @@ export default async function AboutPage() {
                 </p>
               </div>
               <div className="grid gap-3 md:grid-cols-2">
-                {[
-                  "Frontend Development (HTML, CSS, JavaScript, TypeScript, React, Next.js)",
-                  "Manual QA Testing",
-                  "Responsive Web Design",
-                  "UI/UX Principles",
-                  "MySQL Databases",
-                  "Python Fundamentals",
-                  "Sanity CMS",
-                  "SEO Optimization",
-                  "Technical Writing",
-                  "Research and Analysis",
-                  "Storytelling",
-                  "Journalism and Media Communication",
-                  "Content Creation",
-                  "English (B2 Intermediate)",
-                  "Problem Solving",
-                  "Attention to Detail",
-                ].map((skill) => (
+                {skills.map((skill) => (
                   <span
                     key={skill}
                     className="inline-flex border border-[var(--rule)] bg-[var(--paper-alt)] px-4 py-2 text-sm text-[var(--ink-soft)]"
@@ -146,10 +143,10 @@ export default async function AboutPage() {
                 </h2>
               </div>
               <p className="leading-8 text-[var(--ink-soft)]">
-                I am a multidisciplinary professional with a strong interest in
-                software development, quality assurance, journalism, and creative
-                writing. I enjoy building elegant web experiences, analyzing
-                complex topics, and telling stories that have a meaningful impact.
+                I'm a frontend developer with a strong interest in UX/UI,
+                accessibility, and building products that feel intuitive and
+                well-crafted. QA testing sharpened my eye for detail; writing and
+                journalism shaped how I think about clarity and communication.
               </p>
               <p className="leading-8 text-[var(--ink-soft)]">
                 My approach blends technical rigor with thoughtful design and
@@ -162,7 +159,7 @@ export default async function AboutPage() {
           <div className="space-y-6">
             <div className="overflow-hidden border border-[var(--rule)] bg-[var(--paper)]">
               <Image
-                src="/me.jpg"
+                src="/foto-leo.jpeg"
                 alt="Portrait of Leonardo Alcala"
                 width={1200}
                 height={1500}
